@@ -1,0 +1,10 @@
+package com.coe.ailoganalyzer.loganalyzerv2.model;
+
+public record ApiError(
+
+        String code,
+
+        String message
+
+) {
+}

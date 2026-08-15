@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ai-log-analyzer
+
+ollama:
+  base-url: http://localhost:11434
+  model: llama3.2
+  temperature: 0.1
+
+server:
+  port: 8080
