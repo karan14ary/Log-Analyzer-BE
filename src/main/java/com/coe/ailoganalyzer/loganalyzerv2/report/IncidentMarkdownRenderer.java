@@ -81,11 +81,11 @@ public class IncidentMarkdownRenderer {
 
             markdown.append("### Evidence\n\n");
 
-            for (String evidence :
+            for (Object evidence :
                     rca.evidence()) {
 
                 markdown.append("- ")
-                        .append(evidence)
+                        .append(String.valueOf(evidence))
                         .append("\n");
             }
 

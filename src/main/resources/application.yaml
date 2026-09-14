@@ -3,8 +3,11 @@ spring:
     name: ai-log-analyzer
 
 ollama:
+  # Base URL for the Ollama local API
   base-url: http://localhost:11434
-  model: llama3.2
+  # The AI model to use. Ensure you have pulled it: ollama pull llama3.2
+  # Alternatives: llama3, mistral, gemma:2b, phi3
+  model: llama3.1
   temperature: 0.1
 
 server:

@@ -53,6 +53,7 @@ public class TraceTimelineService {
 
         List<LogEventAnalysis> sortedEvents =
                 events.stream()
+                        .filter(a -> a.event().timestamp() != null)
                         .sorted(
                                 Comparator.comparing(
                                         analysis ->
@@ -61,6 +62,20 @@ public class TraceTimelineService {
                                 )
                         )
                         .toList();
+
+        if (sortedEvents.isEmpty()) {
+            return new TraceTimeline(
+                    events.getFirst().traceId(),
+                    events.stream().map(LogEventAnalysis::correlationId).filter(Objects::nonNull).findFirst().orElse(null),
+                    Instant.now(),
+                    Instant.now(),
+                    Duration.ZERO,
+                    events.size(),
+                    (int) events.stream().filter(this::isError).count(),
+                    null,
+                    events
+            );
+        }
 
         Instant startTime =
                 sortedEvents.getFirst()

@@ -11,7 +11,7 @@ public record RcaResult(
 
         String impact,
 
-        List<String> evidence,
+        List<Object> evidence,
 
         List<String> recommendations
 

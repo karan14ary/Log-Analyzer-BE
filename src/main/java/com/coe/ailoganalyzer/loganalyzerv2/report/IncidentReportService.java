@@ -35,15 +35,19 @@ public class IncidentReportService {
                 analyses.stream()
                         .map(analysis ->
                                 analysis.event().timestamp())
+                        .filter(java.util.Objects::nonNull)
                         .min(Comparator.naturalOrder())
-                        .orElse(null).toInstant();
+                        .map(java.time.OffsetDateTime::toInstant)
+                        .orElse(Instant.now());
 
         Instant endTime =
                 analyses.stream()
                         .map(analysis ->
                                 analysis.event().timestamp())
+                        .filter(java.util.Objects::nonNull)
                         .max(Comparator.naturalOrder())
-                        .orElse(null).toInstant();
+                        .map(java.time.OffsetDateTime::toInstant)
+                        .orElse(Instant.now());
 
         Duration duration =
                 calculateDuration(

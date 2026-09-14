@@ -315,6 +315,10 @@ public class AnomalyDetectionService {
     private Instant timestamp(
             LogEventAnalysis analysis) {
 
+        if (analysis.event().timestamp() == null) {
+            return Instant.now();
+        }
+
         return analysis.event()
                 .timestamp().toInstant();
     }
