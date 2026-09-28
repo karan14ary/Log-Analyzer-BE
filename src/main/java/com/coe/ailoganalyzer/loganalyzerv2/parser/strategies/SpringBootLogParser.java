@@ -18,7 +18,7 @@ public class SpringBootLogParser implements LogParser {
 
     private static final Pattern PATTERN =
             Pattern.compile(
-                    "^(\\S+)\\s+" +
+                    "^(\\d{4}-\\d{2}-\\d{2}(?:T\\S+|\\s+\\d{2}:\\d{2}:\\d{2}\\.\\d{3}))\\s+" +
                             "(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)\\s+" +
                             "(\\d+)\\s+---\\s+" +
                             "\\[(.*?)]\\s+" +

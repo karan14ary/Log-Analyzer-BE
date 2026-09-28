@@ -34,7 +34,10 @@ public class OllamaClient {
                         config.model(),
                         prompt,
                         false,
-                        config.temperature()
+                        "json",
+                        new OllamaGenerateRequest.Options(
+                                config.temperature()
+                        )
                 );
 
         try {

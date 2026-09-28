@@ -9,7 +9,12 @@ public record OllamaGenerateRequest(
 
         boolean stream,
 
-        double temperature
+                String format,
+
+                Options options
 
 ) {
+
+        public record Options(double temperature) {
+        }
 }

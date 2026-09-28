@@ -133,37 +133,6 @@ public class TraceTimelineService {
 
         );
     }
-    private String getRootCauseCandidate(
-            LogEventAnalysis analysis) {
-
-        if (analysis.exceptionInfo() != null
-                && analysis.exceptionInfo()
-                .exceptionType() != null) {
-
-            return analysis.fingerprintInfo()
-                    .fingerprint();
-        }
-
-        return analysis.fingerprintInfo()
-                .fingerprint();
-    }
-    private String findRootCauseFingerprint(
-            List<LogEventAnalysis> events) {
-
-        return events.stream()
-                .filter(this::isError)
-                .sorted(
-                        Comparator.comparing(
-                                analysis ->
-                                        analysis.event()
-                                                .timestamp()
-                        )
-                )
-                .map(this::getRootCauseCandidate)
-                .filter(Objects::nonNull)
-                .findFirst()
-                .orElse(null);
-    }
     private boolean isError(
             LogEventAnalysis analysis) {
 
